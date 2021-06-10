@@ -1,0 +1,258 @@
+#Pokedex
+
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+pokedex.head(n=300)
+
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+pokedex.columns
+
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+pokedex.type_1.describe()
+
+*   count = quantidade de resultados
+*   unique = resultados sem repetição/únicos
+*   top = qual mais se repete
+*   freq = frequência 
+
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+pokedex.attack.describe()
+
+*   count = quantidade de resultados
+*   mean = média
+*   std = desvio padrão
+*   min = menor valor
+*   max = maior valor
+*   float64 = números inteiros
+
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+pokedex.species_id.count()
+
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+pokedex.attack.mean()
+
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+pokedex.attack.unique()
+
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+pokedex.type_1.value_counts()
+
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+pokedex.type_2.value_counts().sort_values()
+
+---
+Usando MatPlotLib para criar gráficos.
+
+---
+
+
+
+
+%matplotlib inline
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+
+pokedex.type_1.value_counts().plot.line()
+
+%matplotlib inline
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+
+pokedex.type_2.value_counts.plot.bar()
+
+%matplotlib inline
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+
+pokedex.height.plot.line()
+
+%matplotlib inline
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+pokedex.plot.line(x='weight', y='defense')
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+pdx = pd.read_csv("pokemon.csv", index_col= 1)
+tipo1 = [114, 98, 70, 69, 57, 53, 50, 44, 32, 32, 32, 31, 28, 27, 27, 25, 18, 4]
+tipo2 = [14, 4, 25, 3, 33, 12, 6, 14, 35, 18, 14, 20, 34, 26, 22, 14, 23, 97]
+tmnbar = 0.3
+plt.figure(figsize=(20,10))
+r1 = np.arange(len(tipo1))
+r2 = [x + tmnbar for x in r1]
+plt.bar(r1, tipo1,color='red', label= 'Tipo Primário',width=tmnbar)
+plt.bar(r2, tipo2,color='black', label= 'Tipo Secundário',width=tmnbar)
+plt.xlabel('tipos de pokemons')
+plt.xticks([r + tmnbar for r in range(len(tipo1))],['water', 'normal', 'grass', 'bug', 'psychic', 'fire', 'eletric', 'rock', 'ground', 'dragon', 'ghost', 'dark', 'poison', 'fighting', 'steel', 'ice', 'fairy','flying'])
+plt.ylabel('Quantidades de pokemons')
+plt.title("Quantidades de pokemons relacionados ao tipo primário e secundário")
+plt.legend()
+plt.show()
+
+TESTES ABAIXO
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+pdx = pd.read_csv("pokemon.csv", index_col= 1)
+tipo1 = [114, 98, 70, 69, 57, 53, 50, 44, 32, 32, 32, 31, 28, 27, 27, 25, 18, 4]
+tipo2 = [14, 4, 25, 3, 33, 12, 6, 14, 35, 18, 14, 20, 34, 26, 22, 14, 23, 97]
+tmnbar = 0.3
+plt.figure(figsize=(20,10))
+r1 = np.arange(len(tipo1))
+r2 = [x + tmnbar for x in r1]
+plt.bar(r1, tipo1,color='red', label= 'Tipo Primário',width=tmnbar)
+plt.bar(r2, tipo2,color='black', label= 'Tipo Secundário',width=tmnbar)
+plt.xlabel('tipos de pokemons')
+plt.xticks([r + tmnbar for r in range(len(tipo1))],['water', 'normal', 'grass', 'bug', 'psychic', 'fire', 'eletric', 'rock', 'ground', 'dragon', 'ghost', 'dark', 'poison', 'fighting', 'steel', 'ice', 'fairy','flying'])
+plt.ylabel('Quantidades de pokemons')
+plt.title("Quantidades de pokemons relacionados ao tipo primário e secundário")
+plt.legend()
+plt.show()
+
+
+
+%matplotlib inline
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+
+pokedex.attack.max().type_1.plot.bar()
+
+%matplotlib inline
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+
+pokedex = pd.read_csv("pokemon.csv", index_col=0)
+
+g=sns.factorplot(data=pokedex.head(n=150), x= 'speed', y= 'weight', hue= 'pokemon')
+g.fig.set_figwidth(15)
+g.fig.set_figheight(9)
+
+
+#Titanic
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+import pandas as pd 
+import seaborn as sns
+import numpy as np 
+
+train = pd.read_csv('train.csv', header = 0, dtype={'Age': np.float64})
+test  = pd.read_csv('test.csv' , header = 0, dtype={'Age': np.float64})
+
+train.head()
+
+test.head()
+
+train['Sex'] = train['Sex'].str.replace("female", '0').str.replace('male', '1').astype("float")
+train.head()
+
+train['Porto'] = train["Embarked"].str.replace("S", '19').str.replace('C', '3').str.replace('Q', '17').astype("float")
+train.head()
+
+train.Porto = pd.to_numeric(train['Porto'], errors='coerce').astype('Int64')
+
+train.Porto = pd.to_numeric(train['Porto'], errors='coerce').fillna(0).astype(np.int64)
+
+test['Porto'] = test["Embarked"].str.replace("S", '19').str.replace('C', '3').str.replace('Q', '17').astype("float")
+test.head()
+
+test.Porto = pd.to_numeric(test['Porto'], errors='coerce').astype('Int64')
+
+test.Porto = pd.to_numeric(test['Porto'], errors='coerce').fillna(0).astype(np.int64)
+
+train.head()
+
+test.head()
+
+train.groupby(by=['Pclass'])['Survived'].agg(['mean','count'])
+
+sex_survived= train.groupby(by=['Sex','Survived'])['Survived'].agg(['count']).reset_index()
+sex_survived
+
+plt.figure(figsize=(10, 5))
+sns.barplot(data=sex_survived, x='Sex',y='count', hue='Survived');
+
+from google.colab import files
+test["Survived"] = 0
+test.loc[:,['PassengerId', 'Survived']].to_csv('sem_sobreviventes.csv', index = False)
+files.download('sem_sobreviventes.csv')
+
+sns.factorplot(x="Survived", col="Sex", kind="count", data=train)
+
+test['Survived'] = test.Sex == 'female'
+test['Survived'] = test.Survived.apply(lambda x: int(x))
+test.loc[:,['PassengerId', 'Survived']].to_csv('mulheres_sobreviventes.csv', index = False)
+files.download('mulheres_sobreviventes.csv')
+
+sns.factorplot(x="Survived", col="Pclass", kind="count", data=train)
+
+test['Survived'] = test.Pclass == 1
+test['Survived'] = test.Survived.apply(lambda x: int(x))
+test.loc[:,['PassengerId', 'Survived']].to_csv('ricos_sobreviventes.csv', index = False)
+files.download('ricos_sobreviventes.csv')
+
+mulher = train[train.Sex == 'female']
+homem = train[train.Sex == 'male']
+
+sns.factorplot(x = "Survived", col = "SibSp", kind = "count", data = mulher)
+
+test = pd.get_dummies(test,columns=['Sex','Embarked'])
+train = pd.get_dummies(train,columns=['Sex','Embarked'])
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3)
+
+from sklearn.tree import DecisionTreeClassifier
+DT= DecisionTreeClassifier()
+DT.fit(X_train, y_train)
+DT.score(X_test,y_test)
+
+from sklearn.neighbors import KNeighborsClassifier
+model_neighbors = KNeighborsClassifier(n_neighbors=1)
+cross_val_score(model_neighbors, X, y, cv = 5)
+
+from sklearn.naive_bayes import GaussianNB 
+from sklearn.model_selection import cross_val_score 
+model_bayes_cv = GaussianNB()                
+cross_val_score(model_bayes_cv, X, y, cv = 5)
+
+from sklearn.model_selection import LeaveOneOut
+scores = cross_val_score(model_bayes_cv, X, y, cv=LeaveOneOut())
+scores.mean()
